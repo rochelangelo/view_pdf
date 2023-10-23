@@ -4,31 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmação Sorvetada</title>
+    <title>Imagem Adaptável</title>
     <style>
-        /* Define estilos para preencher toda a tela */
-        body, html {
+        body {
             margin: 0;
             padding: 0;
         }
-
-        #container {
-            width: 100%;
-            height: 100vh; /* Altura da tela em unidades de viewport (VH) */
-            overflow: hidden; /* Remover barras de rolagem */
-        }
-
+        
         img {
-            width: 100%;
-            height: 100%; /* Altura da tela em unidades de viewport (VH) */
-            object-fit: cover; /* Manter a proporção da imagem e cobrir todo o contêiner */
+            width: '100%';
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <!-- <embed src="arquivo.pdf" type="application/pdf"> -->
-        <img src="CONFIRMADO.png" alt="Banner Confuirmação">
-    </div>
+    <img id="adaptive-image" src="" alt="Imagem Adaptável">
+    <script>
+        // Função para verificar o padrão da tela e carregar a imagem apropriada
+        function loadAppropriateImage() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            // Exemplo de verificação para determinar qual imagem carregar
+            if (screenWidth / screenHeight > 16 / 9) {
+                // Carregue a imagem 16:9
+                document.getElementById("adaptive-image").src = "CONFIRMADO_16_9.jpg";
+            } else {
+                // Carregue a outra imagem
+                document.getElementById("adaptive-image").src = "CONFIRMADO.jpg";
+            }
+        }
+
+        // Carregue a imagem apropriada ao carregar a página
+        window.addEventListener("load", loadAppropriateImage);
+
+        // Recarregue a imagem ao redimensionar a tela
+        window.addEventListener("resize", loadAppropriateImage);
+    </script>
 </body>
 </html>
