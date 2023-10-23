@@ -10,18 +10,14 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: '100%';
-            overflow: hidden; /* Remove barras de rolagem */
         }
 
         #pdf-container {
             width: '100%';
-            height: '100%';
         }
 
         embed {
             width: '100%';
-            height: '100%';
         }
     </style>
 </head>
@@ -30,23 +26,22 @@
         <embed id="pdf-embed" type="application/pdf">
     </div>
     <script>
-        // Ajuste o tamanho do embed ao tamanho da tela
-        function resizePdf() {
+        // Ajuste a altura do embed com base na altura da tela
+        function setPdfHeight() {
             const pdfEmbed = document.getElementById("pdf-embed");
-            const pdfContainer = document.getElementById("pdf-container");
-            pdfEmbed.width = pdfContainer.clientWidth;
-            pdfEmbed.height = pdfContainer.clientHeight;
+            const screenHeight = window.innerHeight; // Obtenha a altura da tela em pixels
+            pdfEmbed.style.height = screenHeight + "px";
         }
 
-        // Redimensione o PDF quando a janela for redimensionada
-        window.addEventListener("resize", resizePdf);
-
-        // Carregue o PDF após a página ser carregada
+        // Defina a altura do PDF quando a página for carregada
         window.addEventListener("load", () => {
             const pdfEmbed = document.getElementById("pdf-embed");
             pdfEmbed.src = "arquivo.pdf";
-            resizePdf(); // Chame a função de redimensionamento ao carregar o PDF
+            setPdfHeight(); // Chame a função para definir a altura do PDF
         });
+
+        // Redefina a altura do PDF quando a janela for redimensionada
+        window.addEventListener("resize", setPdfHeight);
     </script>
 </body>
 </html>
