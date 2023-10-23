@@ -27,7 +27,26 @@
 </head>
 <body>
     <div id="pdf-container">
-        <embed src="arquivo.pdf" type="application/pdf">
+        <embed id="pdf-embed" type="application/pdf">
     </div>
+    <script>
+        // Ajuste o tamanho do embed ao tamanho da tela
+        function resizePdf() {
+            const pdfEmbed = document.getElementById("pdf-embed");
+            const pdfContainer = document.getElementById("pdf-container");
+            pdfEmbed.width = pdfContainer.clientWidth;
+            pdfEmbed.height = pdfContainer.clientHeight;
+        }
+
+        // Redimensione o PDF quando a janela for redimensionada
+        window.addEventListener("resize", resizePdf);
+
+        // Carregue o PDF após a página ser carregada
+        window.addEventListener("load", () => {
+            const pdfEmbed = document.getElementById("pdf-embed");
+            pdfEmbed.src = "arquivo.pdf";
+            resizePdf(); // Chame a função de redimensionamento ao carregar o PDF
+        });
+    </script>
 </body>
 </html>
