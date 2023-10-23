@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Confimação Sorvetada</title>
-    </head>
-    <body>
-        <div style="height: 100%; width: 100%;">
-            <embed src="arquivo.pdf" type="application/pdf" width="100%" height="100%">
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação Sorvetada</title>
+    <style>
+        /* Define estilos para preencher toda a tela */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: '100%';
+            overflow: hidden; /* Remove barras de rolagem */
+        }
+
+        #pdf-container {
+            width: '100%';
+            height: '100%';
+        }
+
+        embed {
+            width: '100%';
+            height: '100%';
+        }
+    </style>
+</head>
+<body>
+    <div id="pdf-container">
+        <embed src="arquivo.pdf" type="application/pdf">
+    </div>
+</body>
 </html>
